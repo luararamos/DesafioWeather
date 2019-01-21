@@ -6,14 +6,19 @@ import com.example.luara.desafiotruckpad.interfaces.WeatherAPI;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitService {
 
-    public static final String BASE_URL = "https://samples.openweathermap.org/";
+    public static final String BASE_URL = "https://api.openweathermap.org/";
 
     private static Retrofit retrofit;
+
+    HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
+    //interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+    
 
     public static Retrofit getRetrofit() {
         if (retrofit == null) {
