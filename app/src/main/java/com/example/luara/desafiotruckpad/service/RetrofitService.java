@@ -16,9 +16,15 @@ public class RetrofitService {
 
     private static Retrofit retrofit;
 
-    HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
-    //interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
-    
+//    HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
+//    //interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+//    //interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+//    OkHttpClient client = new OkHttpClient.Builder().addInterceptor(interceptor).build();
+
+
+
+
+
 
     public static Retrofit getRetrofit() {
         if (retrofit == null) {
@@ -28,11 +34,14 @@ public class RetrofitService {
             httpClient.writeTimeout(30, TimeUnit.SECONDS);
 
 
+
+
             retrofit = new Retrofit.Builder()
                     .baseUrl(BASE_URL)
                     .addConverterFactory(GsonConverterFactory.create())
                     .client(httpClient.build())
                     .build();
+
         }
 
         return retrofit;

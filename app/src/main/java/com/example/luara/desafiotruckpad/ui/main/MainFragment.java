@@ -26,7 +26,7 @@ public class MainFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.main_fragment, container, false);
-        temperature = (TextView) v.findViewById(R.id.temperature);
+        temperature = (TextView) v.findViewById(R.id.temp);
         city = (TextView) v.findViewById(R.id.city);
         description = (TextView) v.findViewById(R.id.description);
         return v;
@@ -36,9 +36,11 @@ public class MainFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mViewModel = ViewModelProviders.of(this).get(MainViewModel.class);
-        city.setText(getActivity().getIntent().getExtras().getString("city"));
-        description.setText(getActivity().getIntent().getExtras().getString("description"));
-        temperature.setText(getActivity().getIntent().getExtras().getString("temperature"));
+        String txtCity = getActivity().getIntent().getExtras().getString("city");
+        String txtDescriotion = getActivity().getIntent().getExtras().getString("description");
+        String txtTemperature = getActivity().getIntent().getExtras().getString("temperature");
+
+        city.setText(" in " + txtCity + "with time "+ txtDescriotion);
         // TODO: Use the ViewModel
     }
 
