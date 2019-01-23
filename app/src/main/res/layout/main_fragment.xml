@@ -21,12 +21,8 @@
             android:id="@+id/temp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Graus"
+            android:text=""
             android:textSize="30sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             android:gravity="center"/>
 
         <TextView
@@ -52,21 +48,19 @@
         android:layout_marginStart="15dp"
         android:layout_marginTop="19dp"
         android:text="Cidade"
-        app:layout_constraintStart_toStartOf="@+id/temp"
-        app:layout_constraintTop_toBottomOf="@+id/temp"
         android:gravity="center"
         android:textSize="20sp"/>
 
-    <TextView
-        android:id="@+id/description"
-        android:layout_width="match_parent"
+    <Button
+        android:id="@+id/button"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="Descrição"
-        app:layout_constraintStart_toStartOf="@+id/city"
-        app:layout_constraintTop_toBottomOf="@+id/city"
-        android:gravity="center"
-        android:textSize="20sp"/>
+        android:text="About"
+        android:layout_marginLeft="140dp"
+        android:layout_marginTop="300dp"
+        android:backgroundTint="@color/colorPrimary"
+        android:textColor="@color/textColor"/>
+
 
 
 </LinearLayout>

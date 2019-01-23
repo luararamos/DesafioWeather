@@ -28,9 +28,6 @@ import com.example.luara.desafiotruckpad.ui.main.MainFragment;
 public class SplashFragment extends Fragment {
 
     private SplashViewModel mViewModel;
-    LocationManager locationManager;
-    String provider;
-    int MY_PERMISSION = 0;
 
     public static SplashFragment newInstance() {
         return new SplashFragment();
@@ -48,10 +45,8 @@ public class SplashFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         mViewModel = ViewModelProviders.of(this).get(SplashViewModel.class);
 
-
         if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-
-
+           //s ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
             return;
 
         }else{
@@ -63,20 +58,23 @@ public class SplashFragment extends Fragment {
                 longitude = location.getLongitude();
                 latitude = location.getLatitude();
             }else{
+                // Se nao encontrar localizacao define  locatizacao de sp
                 longitude = -46.7238848;
                 latitude = -23.5564794;
             }
             Log.d("lat--->",String.valueOf(latitude));
             Log.d("lon--->",String.valueOf(longitude));
 
-            // TODO: Use the ViewModel
-            mViewModel.getWeather(longitude, latitude).observe(this, new Observer<WeatherData>() {
+
+            mViewModel.getWeather(latitude,longitude).observe(this, new Observer<WeatherData>() {
                 @Override
                 public void onChanged(@Nullable WeatherData weatherResponse) {
 
                     if(weatherResponse.getDescription()!=null) {
                         Log.d("City--->", weatherResponse.getName());
                         Log.d("Desc--->", weatherResponse.getDescription());
+                        Log.d("Desc--->", weatherResponse.getTemperatureInCelsius());
+
                         Intent i = new Intent(getActivity(), MainActivity.class);
                         i.putExtra("city", weatherResponse.getName());
                         i.putExtra("description", weatherResponse.getDescription());

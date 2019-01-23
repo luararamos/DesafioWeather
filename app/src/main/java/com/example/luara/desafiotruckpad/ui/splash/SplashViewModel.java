@@ -34,7 +34,6 @@ public class SplashViewModel extends ViewModel {
 
                     weatherResponse.setValue(response.body());
                 }
-
             }
 
             @Override

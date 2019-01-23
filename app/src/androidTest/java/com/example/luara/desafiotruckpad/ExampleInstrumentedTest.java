@@ -2,8 +2,11 @@ package com.example.luara.desafiotruckpad;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
+import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
+import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -21,6 +24,15 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.example.luara.desafiotruckpad", appContext.getPackageName());
+        assertEquals("com.example.luara.desafiobrunoapplication", appContext.getPackageName());
+    }
+
+    @Rule
+    public ActivityTestRule<SplashActivity> activityActivityTestRule = new ActivityTestRule<SplashActivity>(SplashActivity.class);
+
+    @Before
+    public void init(){
+        activityActivityTestRule.getActivity()
+                .getSupportFragmentManager().beginTransaction();
     }
 }

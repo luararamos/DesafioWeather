@@ -8,7 +8,9 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.luara.desafiotruckpad.R;
 
@@ -16,6 +18,7 @@ public class MainFragment extends Fragment {
 
     private MainViewModel mViewModel;
     public TextView temperature, city, description;
+    private Button buttonTest;
     private View v;
     public static MainFragment newInstance() {
         return new MainFragment();
@@ -28,7 +31,16 @@ public class MainFragment extends Fragment {
         v = inflater.inflate(R.layout.main_fragment, container, false);
         temperature =  v.findViewById(R.id.temp);
         city =  v.findViewById(R.id.city);
-        description = v.findViewById(R.id.description);
+        buttonTest = v.findViewById(R.id.button);
+
+        buttonTest.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v)
+            {
+                Toast.makeText(getContext(), "Just Unit Teste", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
         return v;
     }
 
@@ -39,8 +51,8 @@ public class MainFragment extends Fragment {
         String txtCity = getActivity().getIntent().getExtras().getString("city");
         String txtDescriotion = getActivity().getIntent().getExtras().getString("description");
         String txtTemperature = getActivity().getIntent().getExtras().getString("temperature");
-
-        city.setText(" in " + txtCity + "with time "+ txtDescriotion);
+        temperature.setText(txtTemperature);
+        city.setText(" " + txtCity + " "+ txtDescriotion);
     }
 
 }
