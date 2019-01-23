@@ -11,4 +11,5 @@ Desenvolvido em Java, a arquitetura utilizada é a MVVM. O build do projeto no c
 Os testes unitários verificam se as requisições e os dados utilizados da api estão ocorrendo corretamente. Por alguma razão, o teste apresentou falhas nos primeiros testes, requisitando talvez aperfeiçoamento do código.
 
 Referências:
+
 Open Weather API: https://openweathermap.org/
