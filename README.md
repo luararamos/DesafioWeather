@@ -6,7 +6,7 @@ Desenvolvido em Java, a arquitetura utilizada é a MVVM. O build do projeto no c
 
 2-	Usuário é direcionado para a Main, onde é apresentada a temperatura, a cidade e a descrição.
 
-3- Se a permissão de localização falhar, o usuário fica na splash e não é direcionado para o Main (nesse caso, o usuário deve abrir a tela de configurações do celular e habilitar as permissões manualmente.
+3- Se a permissão de localização falhar, o usuário fica na splash e não é direcionado para o Main (nesse caso, o usuário deve abrir a tela de configurações do celular e habilitar as permissões manualmente).
 
 Os testes unitários verificam se as requisições e os dados utilizados da api estão ocorrendo corretamente. Por alguma razão, o teste apresentou falhas nos primeiros testes, requisitando talvez aperfeiçoamento do código.
 
