@@ -6,7 +6,6 @@ import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
@@ -21,9 +20,8 @@ import android.view.ViewGroup;
 
 import com.example.luara.desafiotruckpad.MainActivity;
 import com.example.luara.desafiotruckpad.R;
-import com.example.luara.desafiotruckpad.SplashActivity;
 import com.example.luara.desafiotruckpad.model.WeatherData;
-import com.example.luara.desafiotruckpad.ui.main.MainFragment;
+
 
 public class SplashFragment extends Fragment {
 
@@ -45,8 +43,10 @@ public class SplashFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         mViewModel = ViewModelProviders.of(this).get(SplashViewModel.class);
 
+
+
         if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-           //s ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
+            ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
             return;
 
         }else{
@@ -59,12 +59,12 @@ public class SplashFragment extends Fragment {
                 latitude = location.getLatitude();
             }else{
                 // Se nao encontrar localizacao define  locatizacao de sp
+                // O ideal seria mandar para um terceiro fragment que pediria a inclusao de uma localizacao pelo usuario
                 longitude = -46.7238848;
                 latitude = -23.5564794;
             }
             Log.d("lat--->",String.valueOf(latitude));
             Log.d("lon--->",String.valueOf(longitude));
-
 
             mViewModel.getWeather(latitude,longitude).observe(this, new Observer<WeatherData>() {
                 @Override
@@ -80,7 +80,7 @@ public class SplashFragment extends Fragment {
                         i.putExtra("description", weatherResponse.getDescription());
                         i.putExtra("temperature", weatherResponse.getTemperatureInCelsius());
                         startActivity(i);
-                        //getActivity().finish();
+                        getActivity().finish();
                     }
                     else
                         Log.d("--->", "entrou else");
